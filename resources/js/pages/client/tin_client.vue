@@ -1,0 +1,90 @@
+<template>
+  <div>
+    <button type="button" class="btn action" @click="PrintContent2" style='width:100px'>Print <i class="fa fa-print pl-2" aria-hidden="true"></i
+              ></button>
+
+     <div id="print-container2" class="mt-5">
+      <div class='col-md-12'>
+                <img :src="'/' + form.tin_img" class='print_img'/>
+            </div>
+
+    </div>
+  </div>
+</template>
+<script>
+export default {
+  data() {
+    return {
+      id: "",
+      form: {
+        tin_img: "",
+      },
+    };
+  },
+  beforeRouteEnter(to, from, next) {
+    next((vm) => {
+      // Access the $router property here
+      if (!User.hasLoggedIn()) {
+        vm.$router.push({ name: "home" });
+      } else if (User.getGuard() == "manager") {
+        vm.$router.push({ name: "manager_dashboard" });
+      } else {
+        vm.$router.push({ name: "tin_client" });
+      }
+    });
+  },
+  created() {
+
+     if(!User.hasLoggedIn()){
+      this.$router.push({name:'home'});
+    }else{
+      this.$router.push({name:'tin_client'});
+    }
+
+    let id = this.$route.params.id;
+    this.id = id;
+    axios
+      .get("/api/client/" + id)
+      .then(({ data }) => {
+        this.form.tin_img = data.tin_img;
+
+      })
+      .catch((err) => {
+      });
+  },
+  methods: {
+    PrintContent2() {
+      const printContents2 = document.getElementById("print-container2").innerHTML;
+      const originalContents2 = document.body.innerHTML;
+      const popupWin2 = window.open("width=800,height=800");
+      popupWin2.document.open();
+      popupWin2.document.write(`
+        <html>
+          <head>
+            <style>
+              /* Your styles go here */
+              *{
+                padding:0.45em;
+              }
+           .print_img{
+                width:100%;
+                height:auto;
+            }
+            </style>
+          </head>
+          <body onload="window.print();window.close();">${printContents2}</body>
+        </html>
+      `);
+      popupWin2.document.close();
+      this.$router.push({name:'view_client',params:{id:this.$route.params.id}});
+
+    },
+  },
+};
+</script>
+<style >
+    #print-container2 img{
+        width:80%;
+        height:auto;
+    }
+</style>

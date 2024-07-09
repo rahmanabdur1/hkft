@@ -1,0 +1,79 @@
+
+
+body{
+    font-family: Nunito,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: left;
+}
+
+.admin_nav{
+    background-color: #605CA8;
+}
+#accordionSidebar {
+        background: #1A2226;
+        border: 1px solid grey;
+
+}
+.remove_bg_td{
+    display:flex;
+}
+.modal-body{
+    margin-top:50px;
+}
+.modal-body .btn-close{
+    position: absolute;
+    right: 15px;
+    margin-top: -25px;
+    border: none;
+    font-size: 1.5rem;
+}
+.customModal1{
+    display: none;
+    position: absolute;
+    width: 10s0vw;
+    left: 10%;
+    right: 10%;
+    top: 30%;
+    height: auto;
+}
+.login_content {
+    background: #605CA8;
+
+}
+.c-title{
+   color:#605CA8;
+   font-size:3em !important;
+}
+.label_style{
+    color: #554e6a;
+    font-size: 1rem;
+    font-weight: bold;
+}
+.loginBtn{
+    color:white !important;
+    background:#605CA8 !important;
+}
+.input_form{
+    font-size:1rem !important;
+    border:1px solid #554e6a !important;
+}
+.sub_menu a{
+    color:white !important;
+}
+.sub_menu a:hover{
+    background-color: #605CA8 !important;
+    color:white !important;
+}
+table tr th{
+    font-size:0.9em;
+}
+table tr td{
+    font-size:0.9em;
+}
+@media print {
+   .form-group{
+        display:inline-block;
+   }
+  }
